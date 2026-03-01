@@ -17,66 +17,38 @@
     align-items: flex-start;
     font-family: 'Playfair Display', serif;
   }
+  .phone {
+    width: 100%;
+    max-width: 430px;
+    min-height: 100vh;
+    background: #0c0a08;
+    position: relative;
+    overflow-x: hidden;
+    box-shadow: 0 0 80px rgba(0,0,0,0.8);
+  }
+  @media (min-width: 500px) {
+    body { align-items: center; padding: 24px 0; }
+    .phone { min-height: 844px; border-radius: 44px; border: 1px solid #26221c; box-shadow: 0 0 0 1px #26221c, 0 40px 80px rgba(0,0,0,0.9), inset 0 1px 0 #363028; }
+  }
+  .screen { display: none; flex-direction: column; min-height: 100vh; padding: 52px 26px 0; animation: fu .3s ease; }
+  @media (min-width: 500px) { .screen { min-height: 844px; } }
+  .screen.active { display: flex; }
+  @keyframes fu { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 
-.phone {
-width: 100%;
-max-width: 430px;
-min-height: 100vh;
-background: #0c0a08;
-position: relative;
-overflow-x: hidden;
-box-shadow: 0 0 80px rgba(0,0,0,0.8);
-}
-
-/* On larger screens, show as phone */
-@media (min-width: 500px) {
-body { align-items: center; padding: 24px 0; }
-.phone {
-min-height: 844px;
-border-radius: 44px;
-border: 1px solid #26221c;
-box-shadow: 0 0 0 1px #26221c, 0 40px 80px rgba(0,0,0,0.9), inset 0 1px 0 #363028;
-}
-}
-
-.screen {
-display: none;
-flex-direction: column;
-min-height: 100vh;
-padding: 52px 26px 0;
-animation: fu .3s ease;
-}
-@media (min-width: 500px) { .screen { min-height: 844px; } }
-.screen.active { display: flex; }
-@keyframes fu { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-
-/* API Key screen */
-.key-screen {
-display: none; flex-direction: column;
-align-items: center; justify-content: center;
-min-height: 100vh; padding: 40px 32px;
-animation: fu .3s ease;
-}
+.key-screen { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 32px; animation: fu .3s ease; }
 @media (min-width: 500px) { .key-screen { min-height: 844px; } }
 .key-screen.active { display: flex; }
 .key-logo { font-size: 36px; margin-bottom: 20px; }
 .key-title { font-family: ‘Playfair Display’, serif; font-size: 28px; color: #ece4d4; text-align: center; margin-bottom: 6px; }
 .key-title em { color: #d4a96a; font-style: italic; }
-.key-sub { font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; color: #3e3428; letter-spacing: .11em; text-transform: uppercase; text-align: center; margin-bottom: 40px; }
+.key-sub { font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; color: #3e3428; letter-spacing: .11em; text-transform: uppercase; text-align: center; margin-bottom: 36px; }
 .key-label { font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; color: #5a4e3e; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; align-self: flex-start; }
-.key-input {
-width: 100%; padding: 14px 16px;
-background: #111009; border: 1px solid #201c16;
-border-radius: 13px; color: #ece4d4;
-font-family: ‘IBM Plex Mono’, monospace; font-size: 12px;
-letter-spacing: .05em; outline: none;
-transition: border-color .2s; margin-bottom: 10px;
-}
+.key-input { width: 100%; padding: 14px 16px; background: #111009; border: 1px solid #201c16; border-radius: 13px; color: #ece4d4; font-family: ‘IBM Plex Mono’, monospace; font-size: 12px; letter-spacing: .05em; outline: none; transition: border-color .2s; margin-bottom: 10px; }
 .key-input:focus { border-color: #3a3020; }
+.key-free { font-family: ‘IBM Plex Mono’, monospace; font-size: 9px; color: #5a8a50; letter-spacing: .06em; line-height: 1.6; text-align: center; padding: 10px 14px; background: rgba(90,138,80,.08); border: 1px solid rgba(90,138,80,.2); border-radius: 10px; margin-bottom: 12px; }
 .key-hint { font-family: ‘IBM Plex Mono’, monospace; font-size: 9px; color: #2e2820; letter-spacing: .06em; line-height: 1.6; text-align: center; margin-bottom: 24px; }
 .key-hint a { color: #5a4e3e; text-decoration: none; }
 .key-hint a:hover { color: #d4a96a; }
-.key-warning { font-family: ‘IBM Plex Mono’, monospace; font-size: 9px; color: #7a5030; letter-spacing: .06em; line-height: 1.6; text-align: center; padding: 10px 14px; background: rgba(160,80,30,.08); border: 1px solid rgba(160,80,30,.15); border-radius: 10px; margin-bottom: 20px; }
 
 .back { font-family: ‘IBM Plex Mono’, monospace; font-size: 11px; letter-spacing: .14em; color: #5a4e3e; cursor: pointer; margin-bottom: 26px; display: inline-flex; align-items: center; gap: 5px; transition: color .2s; background: none; border: none; }
 .back:hover { color: #d4a96a; }
@@ -103,10 +75,8 @@ textarea::placeholder { color: #2a2418; }
 .bg { width: 100%; padding: 12px; background: transparent; color: #5a4e3e; border: 1px solid #201c16; border-radius: 13px; font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; letter-spacing: .11em; text-transform: uppercase; cursor: pointer; transition: all .2s; margin-top: 9px; }
 .bg:hover { border-color: #5a4e3e; color: #c8b898; }
 .bg:disabled { opacity: .3; cursor: not-allowed; }
-.bg-sm { font-size: 9px; padding: 8px 14px; width: auto; }
 
 .hr { height: 1px; background: #181410; margin: 16px 0; }
-
 .rbody { font-family: ‘Georgia’, serif; font-size: 15px; color: #a89878; line-height: 1.88; flex: 1; overflow-y: auto; }
 .rbody p { margin-bottom: 15px; }
 
@@ -116,21 +86,18 @@ textarea::placeholder { color: #2a2418; }
 .loading-center { flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; }
 .loading-label { font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; color: #3e3428; letter-spacing: .1em; }
 
-/* Mood */
 .mood-row { display: flex; gap: 7px; margin-bottom: 18px; }
 .md { flex: 1; padding: 9px 0; border-radius: 11px; border: 1px solid #201c16; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; transition: all .18s; background: transparent; }
 .md .dc { width: 9px; height: 9px; border-radius: 50%; transition: transform .18s; }
 .md:hover .dc { transform: scale(1.35); }
 .md .dl { font-family: ‘IBM Plex Mono’, monospace; font-size: 8px; color: #3e3428; letter-spacing: .04em; transition: color .18s; }
 
-/* Voice */
 .vbtn { padding: 8px 14px; border-radius: 18px; border: 1px solid #201c16; background: transparent; font-family: ‘IBM Plex Mono’, monospace; font-size: 9px; letter-spacing: .09em; color: #5a4e3e; cursor: pointer; transition: all .2s; display: inline-flex; align-items: center; gap: 6px; }
 .vbtn.on { border-color: #d4a96a; color: #d4a96a; background: rgba(212,169,106,.06); }
 .vdot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
 .vbtn.on .vdot { animation: pd .9s infinite; }
 @keyframes pd{0%,100%{opacity:1}50%{opacity:.25}}
 
-/* Calendar */
 .cal-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
 .cal-ml { font-family: ‘Playfair Display’, serif; font-size: 17px; color: #e4dcd0; font-style: italic; }
 .cal-n { font-family: ‘IBM Plex Mono’, monospace; font-size: 11px; color: #5a4e3e; cursor: pointer; padding: 5px 9px; border: 1px solid #201c16; border-radius: 8px; transition: all .2s; background: transparent; }
@@ -144,34 +111,26 @@ textarea::placeholder { color: #2a2418; }
 .ccell.td .cnum { color: #d4a96a; }
 .cmdot { width: 5px; height: 5px; border-radius: 50%; margin-top: 2px; }
 
-/* Entries */
 .er { padding: 13px 0; border-bottom: 1px solid #141210; cursor: pointer; transition: padding-left .14s; }
 .er:hover { padding-left: 4px; }
 .emeta { font-family: ‘IBM Plex Mono’, monospace; font-size: 9px; color: #3e3428; letter-spacing: .07em; margin-bottom: 4px; display: flex; gap: 7px; align-items: center; }
 .echip { width: 6px; height: 6px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
 .eprev { font-family: ‘Playfair Display’, serif; font-size: 13px; color: #7a6e5e; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
-/* Focus */
 .fbox { background: #111009; border: 1px solid rgba(212,169,106,.18); border-radius: 17px; padding: 20px; margin-bottom: 16px; }
 .ftag { font-family: ‘IBM Plex Mono’, monospace; font-size: 9px; color: #d4a96a; letter-spacing: .17em; text-transform: uppercase; margin-bottom: 10px; }
 .fbody { font-family: ‘Playfair Display’, serif; font-size: 15px; color: #e4dcd0; line-height: 1.75; }
 
-/* Saved */
 .saved-center { flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; }
+.avg-box { background: #111009; border: 1px solid #201c16; border-radius: 13px; padding: 13px 17px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
+.avg-label { font-family: ‘IBM Plex Mono’, monospace; font-size: 9px; color: #3e3428; letter-spacing: .1em; text-transform: uppercase; }
+.icon-btn { background: none; border: none; color: #3e3428; cursor: pointer; padding: 4px 8px; border-radius: 8px; transition: color .2s; font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; letter-spacing: .08em; display: flex; align-items: center; gap: 5px; }
+.icon-btn:hover { color: #d4a96a; }
 
-/* Tabs */
 .tabs { display: flex; border-top: 1px solid #161410; background: #0c0a08; padding: 11px 0 max(22px, env(safe-area-inset-bottom, 22px)); }
 .tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; font-family: ‘IBM Plex Mono’, monospace; font-size: 8px; letter-spacing: .07em; color: #2e2820; text-transform: uppercase; padding: 3px 0; transition: color .2s; border: none; background: transparent; }
 .tab.a { color: #d4a96a; }
 .ti { font-size: 15px; line-height: 1; }
-
-/* Settings bar */
-.settings-bar { display: flex; justify-content: flex-end; margin-bottom: 20px; }
-.icon-btn { background: none; border: none; color: #3e3428; font-size: 14px; cursor: pointer; padding: 4px 8px; border-radius: 8px; transition: color .2s; font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; letter-spacing: .08em; display: flex; align-items: center; gap: 5px; }
-.icon-btn:hover { color: #d4a96a; }
-
-.avg-box { background: #111009; border: 1px solid #201c16; border-radius: 13px; padding: 13px 17px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
-.avg-label { font-family: ‘IBM Plex Mono’, monospace; font-size: 9px; color: #3e3428; letter-spacing: .1em; text-transform: uppercase; }
 
 ::-webkit-scrollbar { width: 2px; }
 ::-webkit-scrollbar-thumb { background: #2a2418; border-radius: 2px; }
@@ -187,12 +146,13 @@ textarea::placeholder { color: #2a2418; }
     <div class="key-logo">✦</div>
     <div class="key-title">Mind<br /><em>Journal</em></div>
     <div class="key-sub">Record · Review · Rewind</div>
-    <div class="key-label">Your Anthropic API Key</div>
-    <input class="key-input" id="api-key-input" type="password" placeholder="sk-ant-..." autocomplete="off" />
-    <div class="key-warning">⚠ For personal testing only. Do not share this app with your API key embedded in it — others could use your key and incur charges.</div>
+    <div class="key-free">✓ Uses Google Gemini — free tier, no credit card needed</div>
+    <div class="key-label">Your Gemini API Key</div>
+    <input class="key-input" id="api-key-input" type="password" placeholder="AIza..." autocomplete="off" />
     <div class="key-hint">
-      Get a key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a><br />
-      Your key is stored only in your browser's local storage.
+      Get a free key at <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a><br />
+      Sign in with Google → "Get API Key" → Create → Copy.<br />
+      Your key stays in your browser only, never sent anywhere else.
     </div>
     <button class="bp" id="save-key-btn" style="max-width:100%">Start Journalling</button>
   </div>
@@ -212,7 +172,7 @@ textarea::placeholder { color: #2a2418; }
         <div class="card-name">Record</div>
         <div class="card-hint">Write or speak · log your mood</div>
       </div>
-      <div class="card" id="review-card" onclick="startReview()">
+      <div class="card" onclick="startReview()">
         <div class="card-icon">🧠</div>
         <div class="card-name">Review</div>
         <div class="card-hint">AI pattern & mood analysis</div>
@@ -342,7 +302,6 @@ textarea::placeholder { color: #2a2418; }
 </div>
 
 <script>
-// ── Data ────────────────────────────────────────────────────────────────────
 const MOODS = [
   { v:1, label:'Low',   color:'#7a8696' },
   { v:2, label:'Meh',   color:'#a07850' },
@@ -363,15 +322,15 @@ const PROMPTS = [
 
 const moodColor = v => MOODS.find(m => m.v === v)?.color ?? '#3a3028';
 const moodLabel = v => MOODS.find(m => m.v === v)?.label ?? '';
-const avgMood = arr => arr.length ? arr.reduce((a,b) => a+b, 0) / arr.length : 0;
-const fmtDate = iso => new Date(iso).toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
-const fmtTime = iso => new Date(iso).toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit'});
-const monthName = (y,m) => new Date(y,m,1).toLocaleDateString('en-US', {month:'long', year:'numeric'});
+const avgMood = arr => arr.length ? arr.reduce((a,b) => a+b,0) / arr.length : 0;
+const fmtDate = iso => new Date(iso).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+const fmtTime = iso => new Date(iso).toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+const monthName = (y,m) => new Date(y,m,1).toLocaleDateString('en-US',{month:'long',year:'numeric'});
+const escHtml = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
 let entries = JSON.parse(localStorage.getItem('mj-entries') || '[]');
 let focusText = localStorage.getItem('mj-focus') || '';
 let currentMood = 3;
-let currentScreen = 'apikey';
 let calMonth = { y: new Date().getFullYear(), m: new Date().getMonth() };
 let listening = false;
 let finalTranscript = '';
@@ -379,16 +338,15 @@ let recognition = null;
 let promptIdx = Math.floor(Math.random() * PROMPTS.length);
 
 // ── API Key ──────────────────────────────────────────────────────────────────
-const getKey = () => localStorage.getItem('mj-apikey') || '';
-const setKey = k => localStorage.setItem('mj-apikey', k);
+const getKey = () => localStorage.getItem('mj-gemini-key') || '';
+const setKey = k => localStorage.setItem('mj-gemini-key', k);
 
 document.getElementById('save-key-btn').addEventListener('click', () => {
   const k = document.getElementById('api-key-input').value.trim();
-  if (!k.startsWith('sk-ant-')) { alert('Please enter a valid Anthropic API key (starts with sk-ant-)'); return; }
+  if (!k) { alert('Please paste your Gemini API key.'); return; }
   setKey(k);
   goTo('home');
 });
-
 document.getElementById('settings-btn').addEventListener('click', () => {
   document.getElementById('api-key-input').value = getKey();
   goTo('apikey');
@@ -396,279 +354,237 @@ document.getElementById('settings-btn').addEventListener('click', () => {
 
 // ── Navigation ────────────────────────────────────────────────────────────────
 function goTo(screen) {
-  document.querySelectorAll('.screen, .key-screen').forEach(s => s.classList.remove('active'));
-  const el = document.getElementById('screen-' + screen) || document.getElementById('screen-apikey');
-  el.classList.add('active');
-  currentScreen = screen;
+  document.querySelectorAll('.screen,.key-screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + screen).classList.add('active');
   if (screen === 'home') renderHome();
   if (screen === 'record') renderRecord();
   if (screen === 'rewind') renderRewind();
   if (screen === 'calendar') renderCalendar();
-  // scroll to top
-  el.scrollTop = 0;
+  document.getElementById('screen-' + screen).scrollTop = 0;
 }
 
 // ── Home ──────────────────────────────────────────────────────────────────────
 function renderHome() {
-  const p = document.getElementById('home-pill');
-  p.textContent = entries.length + (entries.length === 1 ? ' entry' : ' entries') + ' captured';
+  document.getElementById('home-pill').textContent = entries.length + (entries.length===1?' entry':' entries') + ' captured';
   const tag = document.getElementById('review-tag');
-  if (entries.length > 0) { tag.style.display = ''; tag.textContent = Math.min(entries.length, 30) + ' entries'; }
-  else tag.style.display = 'none';
+  if (entries.length) { tag.style.display=''; tag.textContent=Math.min(entries.length,30)+' entries'; }
+  else tag.style.display='none';
 }
 
 // ── Record ────────────────────────────────────────────────────────────────────
 function renderRecord() {
-  document.getElementById('record-form').style.display = '';
-  document.getElementById('record-saved').style.display = 'none';
-  document.getElementById('draft').value = '';
-  document.getElementById('record-prompt').textContent = PROMPTS[promptIdx];
-  currentMood = 3;
-  finalTranscript = '';
+  document.getElementById('record-form').style.display='';
+  document.getElementById('record-saved').style.display='none';
+  document.getElementById('draft').value='';
+  document.getElementById('record-prompt').textContent=PROMPTS[promptIdx];
+  currentMood=3; finalTranscript='';
   renderMoodRow();
 }
-
 function renderMoodRow() {
   const row = document.getElementById('mood-row');
-  row.innerHTML = '';
+  row.innerHTML='';
   MOODS.forEach(m => {
-    const div = document.createElement('div');
-    div.className = 'md' + (currentMood === m.v ? ' on' : '');
-    if (currentMood === m.v) div.style.borderColor = m.color;
-    div.innerHTML = `<div class="dc" style="background:${m.color};opacity:${currentMood===m.v?1:0.28}"></div><div class="dl" style="color:${currentMood===m.v?m.color:'#3e3428'}">${m.label}</div>`;
-    div.onclick = () => { currentMood = m.v; renderMoodRow(); };
+    const div=document.createElement('div');
+    div.className='md'+(currentMood===m.v?' on':'');
+    if(currentMood===m.v) div.style.borderColor=m.color;
+    div.innerHTML=`<div class="dc" style="background:${m.color};opacity:${currentMood===m.v?1:0.28}"></div><div class="dl" style="color:${currentMood===m.v?m.color:'#3e3428'}">${m.label}</div>`;
+    div.onclick=()=>{currentMood=m.v;renderMoodRow();};
     row.appendChild(div);
   });
 }
-
 function handleRecord() {
-  const draft = document.getElementById('draft').value.trim();
-  if (!draft) return;
-  const entry = { id: Date.now(), text: draft, mood: currentMood, ts: new Date().toISOString() };
-  entries = [entry, ...entries];
-  localStorage.setItem('mj-entries', JSON.stringify(entries));
-  if (recognition) { recognition.stop(); }
+  const draft=document.getElementById('draft').value.trim();
+  if(!draft) return;
+  entries=[{id:Date.now(),text:draft,mood:currentMood,ts:new Date().toISOString()},...entries];
+  localStorage.setItem('mj-entries',JSON.stringify(entries));
+  if(recognition) recognition.stop();
   setListeningState(false);
-  document.getElementById('record-form').style.display = 'none';
-  document.getElementById('record-saved').style.display = 'flex';
-  promptIdx = Math.floor(Math.random() * PROMPTS.length);
-  setTimeout(() => goTo('home'), 1100);
+  document.getElementById('record-form').style.display='none';
+  document.getElementById('record-saved').style.display='flex';
+  promptIdx=Math.floor(Math.random()*PROMPTS.length);
+  setTimeout(()=>goTo('home'),1100);
 }
 
 // ── Voice ─────────────────────────────────────────────────────────────────────
 function setListeningState(on) {
-  listening = on;
-  const btn = document.getElementById('voice-btn');
-  const label = document.getElementById('voice-label');
-  btn.className = 'vbtn' + (on ? ' on' : '');
-  label.textContent = on ? 'Stop' : 'Speak';
+  listening=on;
+  document.getElementById('voice-btn').className='vbtn'+(on?' on':'');
+  document.getElementById('voice-label').textContent=on?'Stop':'Speak';
 }
-
 function toggleVoice() {
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SR) { alert('Voice recognition not supported in this browser. Try Chrome.'); return; }
-  if (listening) { recognition?.stop(); setListeningState(false); return; }
-  finalTranscript = document.getElementById('draft').value;
-  recognition = new SR();
-  recognition.continuous = true;
-  recognition.interimResults = true;
-  recognition.lang = 'en-US';
-  recognition.onresult = e => {
-    let interim = '';
-    for (let i = e.resultIndex; i < e.results.length; i++) {
-      if (e.results[i].isFinal) finalTranscript += e.results[i][0].transcript + ' ';
-      else interim = e.results[i][0].transcript;
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){alert('Voice not supported here. Try Chrome.');return;}
+  if(listening){recognition?.stop();setListeningState(false);return;}
+  finalTranscript=document.getElementById('draft').value;
+  recognition=new SR();
+  recognition.continuous=true; recognition.interimResults=true; recognition.lang='en-US';
+  recognition.onresult=e=>{
+    let interim='';
+    for(let i=e.resultIndex;i<e.results.length;i++){
+      if(e.results[i].isFinal) finalTranscript+=e.results[i][0].transcript+' ';
+      else interim=e.results[i][0].transcript;
     }
-    document.getElementById('draft').value = finalTranscript + interim;
+    document.getElementById('draft').value=finalTranscript+interim;
   };
-  recognition.onend = () => { setListeningState(false); document.getElementById('draft').value = finalTranscript; };
-  recognition.start();
-  setListeningState(true);
+  recognition.onend=()=>{setListeningState(false);document.getElementById('draft').value=finalTranscript;};
+  recognition.start(); setListeningState(true);
 }
 
-// ── AI ────────────────────────────────────────────────────────────────────────
-async function callAI(system, user, maxTokens = 1000) {
-  const key = getKey();
-  if (!key) throw new Error('No API key');
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: maxTokens, system, messages: [{ role: 'user', content: user }] })
+// ── Gemini AI ─────────────────────────────────────────────────────────────────
+async function callGemini(systemPrompt, userMsg) {
+  const key=getKey();
+  if(!key) throw new Error('No API key set');
+  const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      system_instruction:{parts:[{text:systemPrompt}]},
+      contents:[{role:'user',parts:[{text:userMsg}]}],
+      generationConfig:{maxOutputTokens:1000,temperature:0.8}
+    })
   });
-  if (!res.ok) { const e = await res.json(); throw new Error(e.error?.message || 'API error'); }
-  const data = await res.json();
-  return data.content?.map(b => b.text || '').join('') || '';
+  if(!res.ok){const e=await res.json();throw new Error(e.error?.message||'Gemini API error');}
+  const data=await res.json();
+  return data.candidates?.[0]?.content?.parts?.map(p=>p.text||'').join('')||'';
 }
 
 async function startReview() {
   goTo('review');
-  if (!entries.length) { document.getElementById('review-body').innerHTML = '<p>No entries yet. Start recording!</p>'; return; }
-  document.getElementById('review-loading').style.display = 'flex';
-  document.getElementById('review-body').style.display = 'none';
-  document.getElementById('review-actions').style.display = 'none';
-  const all = entries.slice(0,30).map(e => `[${fmtDate(e.ts)} · mood:${e.mood??'?'}] ${e.text}`).join('\n\n');
+  if(!entries.length){document.getElementById('review-body').innerHTML='<p>No entries yet. Start recording!</p>';return;}
+  document.getElementById('review-loading').style.display='flex';
+  document.getElementById('review-body').style.display='none';
+  document.getElementById('review-actions').style.display='none';
+  const all=entries.slice(0,30).map(e=>`[${fmtDate(e.ts)} · mood:${e.mood??'?'}] ${e.text}`).join('\n\n');
   try {
-    const t = await callAI(
+    const t=await callGemini(
       `You are a thoughtful, incisive personal growth companion. Analyze the user's journal entries including mood scores (1=low,5=great). Extract honest patterns — recurring themes, mood correlations, avoidance, hidden strengths. Warm but direct. 3-4 short paragraphs. No bullets. No fluff.`,
       `My entries:\n\n${all}\n\nWhat patterns do you notice?`
     );
-    document.getElementById('review-body').innerHTML = t.split('\n\n').map(p => p ? `<p>${p}</p>` : '').join('');
+    document.getElementById('review-body').innerHTML=t.split('\n\n').map(p=>p?`<p>${p}</p>`:'').join('');
   } catch(e) {
-    document.getElementById('review-body').innerHTML = `<p style="color:#7a5030">Error: ${e.message}</p>`;
+    document.getElementById('review-body').innerHTML=`<p style="color:#c47050">Error: ${e.message}. Check your API key.</p>`;
   }
-  document.getElementById('review-loading').style.display = 'none';
-  document.getElementById('review-body').style.display = '';
-  document.getElementById('review-actions').style.display = '';
+  document.getElementById('review-loading').style.display='none';
+  document.getElementById('review-body').style.display='';
+  document.getElementById('review-actions').style.display='';
 }
 
 async function handleFocus() {
-  if (!entries.length) { document.getElementById('focus-body').textContent = 'Record some thoughts first!'; return; }
-  document.getElementById('focus-btn').disabled = true;
-  document.getElementById('focus-body').style.display = 'none';
-  document.getElementById('focus-loading').style.display = '';
-  const all = entries.slice(0,30).map(e => `[${fmtDate(e.ts)} · mood:${e.mood??'?'}] ${e.text}`).join('\n\n');
+  if(!entries.length){document.getElementById('focus-body').textContent='Record some thoughts first!';return;}
+  document.getElementById('focus-btn').disabled=true;
+  document.getElementById('focus-body').style.display='none';
+  document.getElementById('focus-loading').style.display='';
+  const all=entries.slice(0,30).map(e=>`[${fmtDate(e.ts)} · mood:${e.mood??'?'}] ${e.text}`).join('\n\n');
   try {
-    const t = await callAI(
-      `You are a focused life coach. From the journal entries and mood scores, pick ONE specific, actionable focus for next week directly tied to the user's patterns. Output ONLY: 1-sentence focus (start with action verb), then 2 sentences on why. No headers. No lists.`,
-      `My entries:\n\n${all}\n\nWhat's my one focus for next week?`, 300
+    const t=await callGemini(
+      `You are a focused life coach. From journal entries and mood scores, pick ONE specific, actionable focus for next week tied to the user's patterns. Output ONLY: 1-sentence focus starting with an action verb, then 2 sentences on why. No headers. No lists.`,
+      `My entries:\n\n${all}\n\nWhat's my one focus for next week?`
     );
-    focusText = t || 'Could not generate focus.';
-    localStorage.setItem('mj-focus', focusText);
+    focusText=t||'Could not generate focus.';
+    localStorage.setItem('mj-focus',focusText);
   } catch(e) {
-    focusText = `Error: ${e.message}`;
+    focusText=`Error: ${e.message}`;
   }
-  document.getElementById('focus-body').textContent = focusText;
-  document.getElementById('focus-body').style.display = '';
-  document.getElementById('focus-loading').style.display = 'none';
-  document.getElementById('focus-btn').disabled = false;
+  document.getElementById('focus-body').textContent=focusText;
+  document.getElementById('focus-body').style.display='';
+  document.getElementById('focus-loading').style.display='none';
+  document.getElementById('focus-btn').disabled=false;
 }
 
-function startFocusAndGo() { goTo('rewind'); handleFocus(); }
+function startFocusAndGo(){goTo('rewind');handleFocus();}
 
 // ── Rewind ────────────────────────────────────────────────────────────────────
 function renderRewind() {
-  const fb = document.getElementById('focus-body');
-  fb.textContent = focusText || 'None yet — generate one below.';
-  fb.style.display = '';
-  document.getElementById('focus-loading').style.display = 'none';
-  document.getElementById('focus-btn').disabled = false;
-
-  const list = document.getElementById('entries-list');
-  list.innerHTML = '';
-  if (!entries.length) {
-    list.innerHTML = '<div style="font-family:\'Playfair Display\',serif;font-size:15px;color:#262018;font-style:italic;padding-top:14px">Nothing recorded yet.</div>';
-    return;
-  }
-  entries.forEach(e => {
-    const div = document.createElement('div');
-    div.className = 'er';
-    div.innerHTML = `
-      <div class="emeta"><div class="echip" style="background:${moodColor(e.mood)}"></div>${moodLabel(e.mood)} · ${fmtDate(e.ts)} · ${fmtTime(e.ts)}</div>
-      <div class="eprev">${escHtml(e.text)}</div>`;
-    div.onclick = () => showEntry(e);
+  const fb=document.getElementById('focus-body');
+  fb.textContent=focusText||'None yet — generate one below.';
+  fb.style.display=''; document.getElementById('focus-loading').style.display='none';
+  document.getElementById('focus-btn').disabled=false;
+  const list=document.getElementById('entries-list');
+  list.innerHTML='';
+  if(!entries.length){list.innerHTML='<div style="font-family:\'Playfair Display\',serif;font-size:15px;color:#262018;font-style:italic;padding-top:14px">Nothing recorded yet.</div>';return;}
+  entries.forEach(e=>{
+    const div=document.createElement('div');
+    div.className='er';
+    div.innerHTML=`<div class="emeta"><div class="echip" style="background:${moodColor(e.mood)}"></div>${moodLabel(e.mood)} · ${fmtDate(e.ts)} · ${fmtTime(e.ts)}</div><div class="eprev">${escHtml(e.text)}</div>`;
+    div.onclick=()=>showEntry(e);
     list.appendChild(div);
   });
 }
-
 function showEntry(e) {
-  document.getElementById('entry-mood-dot').style.background = moodColor(e.mood);
-  document.getElementById('entry-mood-label').textContent = moodLabel(e.mood);
-  document.getElementById('entry-mood-label').style.color = moodColor(e.mood);
-  document.getElementById('entry-meta').textContent = fmtDate(e.ts) + ' · ' + fmtTime(e.ts);
-  document.getElementById('entry-text').textContent = e.text;
+  document.getElementById('entry-mood-dot').style.background=moodColor(e.mood);
+  document.getElementById('entry-mood-label').textContent=moodLabel(e.mood);
+  document.getElementById('entry-mood-label').style.color=moodColor(e.mood);
+  document.getElementById('entry-meta').textContent=fmtDate(e.ts)+' · '+fmtTime(e.ts);
+  document.getElementById('entry-text').textContent=e.text;
   goTo('entry');
 }
 
 // ── Calendar ──────────────────────────────────────────────────────────────────
 function renderCalendar() {
-  const { y, m } = calMonth;
-  document.getElementById('cal-month-label').textContent = monthName(y, m);
-
-  const firstDay = new Date(y, m, 1).getDay();
-  const daysInMonth = new Date(y, m+1, 0).getDate();
-  const todayStr = new Date().toDateString();
-
-  // Build entry map
-  const emap = {};
-  entries.forEach(e => {
-    const d = new Date(e.ts);
-    if (d.getFullYear() === y && d.getMonth() === m) {
-      const day = d.getDate();
-      if (!emap[day]) emap[day] = [];
-      emap[day].push(e.mood ?? 3);
+  const {y,m}=calMonth;
+  document.getElementById('cal-month-label').textContent=monthName(y,m);
+  const firstDay=new Date(y,m,1).getDay();
+  const daysInMonth=new Date(y,m+1,0).getDate();
+  const todayStr=new Date().toDateString();
+  const emap={};
+  entries.forEach(e=>{
+    const d=new Date(e.ts);
+    if(d.getFullYear()===y&&d.getMonth()===m){
+      const day=d.getDate();
+      if(!emap[day]) emap[day]=[];
+      emap[day].push(e.mood??3);
     }
   });
-
-  const grid = document.getElementById('cal-grid');
-  grid.innerHTML = '';
-  ['S','M','T','W','T','F','S'].forEach(d => {
-    const label = document.createElement('div');
-    label.className = 'cdl'; label.textContent = d;
-    grid.appendChild(label);
-  });
-  for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement('div'));
-  for (let day = 1; day <= daysInMonth; day++) {
-    const moods = emap[day] || [];
-    const avg = avgMood(moods);
-    const isToday = new Date(y, m, day).toDateString() === todayStr;
-    const cell = document.createElement('div');
-    cell.className = 'ccell' + (isToday ? ' td' : '');
-    cell.innerHTML = `<div class="cnum">${day}</div>${moods.length ? `<div class="cmdot" style="background:${moodColor(Math.round(avg))}"></div>` : ''}`;
-    if (moods.length) {
-      const dayEntries = entries.filter(e => { const d = new Date(e.ts); return d.getFullYear()===y && d.getMonth()===m && d.getDate()===day; });
-      cell.onclick = () => showCalDay(day, dayEntries);
+  const grid=document.getElementById('cal-grid');
+  grid.innerHTML='';
+  ['S','M','T','W','T','F','S'].forEach(d=>{const l=document.createElement('div');l.className='cdl';l.textContent=d;grid.appendChild(l);});
+  for(let i=0;i<firstDay;i++) grid.appendChild(document.createElement('div'));
+  for(let day=1;day<=daysInMonth;day++){
+    const moods=emap[day]||[];
+    const avg=avgMood(moods);
+    const isToday=new Date(y,m,day).toDateString()===todayStr;
+    const cell=document.createElement('div');
+    cell.className='ccell'+(isToday?' td':'');
+    cell.innerHTML=`<div class="cnum">${day}</div>${moods.length?`<div class="cmdot" style="background:${moodColor(Math.round(avg))}"></div>`:''}`;
+    if(moods.length){
+      const de=entries.filter(e=>{const d=new Date(e.ts);return d.getFullYear()===y&&d.getMonth()===m&&d.getDate()===day;});
+      cell.onclick=()=>showCalDay(day,de);
     }
     grid.appendChild(cell);
   }
-
-  // Legend
-  const legend = document.getElementById('mood-legend');
-  legend.innerHTML = '';
-  MOODS.forEach(m2 => {
-    const d = document.createElement('div');
-    d.style.cssText = 'display:flex;align-items:center;gap:4px';
-    d.innerHTML = `<div style="width:5px;height:5px;border-radius:50%;background:${m2.color}"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#3e3428;letter-spacing:.05em">${m2.label}</span>`;
+  const legend=document.getElementById('mood-legend');
+  legend.innerHTML='';
+  MOODS.forEach(m2=>{
+    const d=document.createElement('div');
+    d.style.cssText='display:flex;align-items:center;gap:4px';
+    d.innerHTML=`<div style="width:5px;height:5px;border-radius:50%;background:${m2.color}"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#3e3428;letter-spacing:.05em">${m2.label}</span>`;
     legend.appendChild(d);
   });
-
-  // Avg
-  const allMoods = Object.values(emap).flat();
-  const avgBox = document.getElementById('cal-avg-box');
-  if (allMoods.length) {
-    const a = Math.round(avgMood(allMoods));
-    avgBox.innerHTML = `<div class="avg-box"><span class="avg-label">Avg mood this month</span><div style="display:flex;align-items:center;gap:7px"><div style="width:7px;height:7px;border-radius:50%;background:${moodColor(a)}"></div><span style="font-family:'Playfair Display',serif;font-size:14px;color:${moodColor(a)};font-style:italic">${moodLabel(a)}</span></div></div>`;
-  } else {
-    avgBox.innerHTML = '';
-  }
+  const allMoods=Object.values(emap).flat();
+  const avgBox=document.getElementById('cal-avg-box');
+  if(allMoods.length){
+    const a=Math.round(avgMood(allMoods));
+    avgBox.innerHTML=`<div class="avg-box"><span class="avg-label">Avg mood this month</span><div style="display:flex;align-items:center;gap:7px"><div style="width:7px;height:7px;border-radius:50%;background:${moodColor(a)}"></div><span style="font-family:'Playfair Display',serif;font-size:14px;color:${moodColor(a)};font-style:italic">${moodLabel(a)}</span></div></div>`;
+  } else avgBox.innerHTML='';
 }
-
-function navCal(dir) {
-  const d = new Date(calMonth.y, calMonth.m + dir, 1);
-  calMonth = { y: d.getFullYear(), m: d.getMonth() };
-  renderCalendar();
-}
-
-function showCalDay(day, dayEntries) {
-  const { y, m } = calMonth;
-  document.getElementById('calday-title').textContent = new Date(y, m, day).toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric'});
-  const container = document.getElementById('calday-entries');
-  container.innerHTML = '';
-  dayEntries.forEach(e => {
-    const div = document.createElement('div');
-    div.style.cssText = 'margin-bottom:16px;background:#111009;border:1px solid #1c1812;border-radius:14px;padding:15px 17px';
-    div.innerHTML = `<div class="emeta"><div class="echip" style="background:${moodColor(e.mood)}"></div>${moodLabel(e.mood)} · ${fmtTime(e.ts)}</div><div style="font-family:'Playfair Display',serif;font-size:14px;color:#8a7a68;line-height:1.72">${escHtml(e.text)}</div>`;
+function navCal(dir){const d=new Date(calMonth.y,calMonth.m+dir,1);calMonth={y:d.getFullYear(),m:d.getMonth()};renderCalendar();}
+function showCalDay(day,dayEntries){
+  const {y,m}=calMonth;
+  document.getElementById('calday-title').textContent=new Date(y,m,day).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+  const container=document.getElementById('calday-entries');
+  container.innerHTML='';
+  dayEntries.forEach(e=>{
+    const div=document.createElement('div');
+    div.style.cssText='margin-bottom:16px;background:#111009;border:1px solid #1c1812;border-radius:14px;padding:15px 17px';
+    div.innerHTML=`<div class="emeta"><div class="echip" style="background:${moodColor(e.mood)}"></div>${moodLabel(e.mood)} · ${fmtTime(e.ts)}</div><div style="font-family:'Playfair Display',serif;font-size:14px;color:#8a7a68;line-height:1.72">${escHtml(e.text)}</div>`;
     container.appendChild(div);
   });
   goTo('calday');
 }
 
-// ── Util ──────────────────────────────────────────────────────────────────────
-function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
 // ── Init ──────────────────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
-  if (getKey()) goTo('home');
-  // else stays on apikey screen
+window.addEventListener('DOMContentLoaded',()=>{
+  if(getKey()) goTo('home');
 });
 </script>
 
